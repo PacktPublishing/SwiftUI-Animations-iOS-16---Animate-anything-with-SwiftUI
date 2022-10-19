@@ -1,0 +1,1218 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fswiss\fcharset0 ArialMT;
+\f3\fnil\fcharset0 Menlo-Regular;\f4\fnil\fcharset0 Menlo-Bold;\f5\fnil\fcharset0 HelveticaNeue;
+\f6\fnil\fcharset0 HelveticaNeue-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green254\blue254;\red255\green255\blue255;
+\red0\green0\blue255;\red34\green255\blue6;\red46\green13\blue110;\red255\green255\blue255;\red0\green0\blue0;
+\red180\green0\blue98;\red15\green104\blue160;\red186\green0\blue17;\red0\green11\blue255;\red0\green0\blue0;
+\red59\green127\blue137;\red92\green38\blue153;\red0\green73\blue117;\red40\green75\blue79;\red33\green33\blue33;
+\red184\green14\blue61;\red86\green96\blue107;\red67\green75\blue84;\red67\green75\blue84;\red67\green75\blue84;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0\c84706;\cssrgb\c100000\c99608\c99608;\cssrgb\c100000\c100000\c100000;
+\cssrgb\c0\c0\c100000;\cssrgb\c0\c98039\c0;\csgenericrgb\c18039\c5098\c43137;\csgenericrgb\c100000\c100000\c100000;\csgenericrgb\c0\c0\c0;
+\csgenericrgb\c70588\c0\c38431\c80000;\csgenericrgb\c5882\c40784\c62745;\csgenericrgb\c72941\c0\c6667;\csgenericrgb\c0\c4314\c100000;\cssrgb\c0\c0\c0;
+\csgenericrgb\c23137\c49804\c53726;\csgenericrgb\c36078\c14902\c60000;\csgenericrgb\c0\c28628\c45882;\csgenericrgb\c15686\c29412\c30980;\cssrgb\c17255\c17255\c17255;
+\cssrgb\c78039\c14510\c30588;\csgenericrgb\c33600\c37617\c42000;\csgenericrgb\c26275\c29412\c32941;\csgenericrgb\c26400\c29556\c33000\c35000;\csgenericrgb\c26400\c29556\c33000;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww34260\viewh20420\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs32 \cf0 Chapter 7 - Animating on three axis of rotation - Gears and Belts\
+\
+In this project we're going to explore the three axis of rotation that we can animate. We will do this by creating belts or chains, and animating gear images that will be turned by the chains, which will ultimately turn a fan blade.\
+\pard\pardeftab720\partightenfactor0
+
+\fs29\fsmilli14667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Let\'92s take a look at the goals for this project, we will be:\AppleTypeServices \cb4 \'a0\
+\AppleTypeServices\AppleTypeServicesF65539 \cb3 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Animating gear cog images\AppleTypeServices \cb4 \'a0\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\AppleTypeServices\AppleTypeServicesF65539 \cb3 \expnd0\expndtw0\kerning0
+Adding a worm gear and animate it using shadows\AppleTypeServices \cb1 \
+\ls1\ilvl0\cb4 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\AppleTypeServices\AppleTypeServicesF65539 \cb3 \expnd0\expndtw0\kerning0
+Create a marching ants effect that we will turn into a moving gear chain by using the dashPhase stroke initializer.\AppleTypeServices \cb4 \'a0 \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Adding a gear shaft and animating it using shadows \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Animating a fan image\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\fs24 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}
+\fs32 Filling out and organizing the ContentView with all the files using Groups, Pragma Marks and the 
+\fs29\fsmilli14667 \AppleTypeServices\AppleTypeServicesF65539 \cb3 \expnd0\expndtw0\kerning0
+ZIndex modifier
+\fs32 \AppleTypeServices \cb1 \kerning1\expnd0\expndtw0  - A
+\fs29\fsmilli14667 \AppleTypeServices\AppleTypeServicesF65539 \cb3 \expnd0\expndtw0\kerning0
+nimating everything on the X,Y, and Z axis\AppleTypeServices \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs48 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \
+Technical Requirements\AppleTypeServices \cb4 \'a0
+\f0\b0\fs24 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs29\fsmilli14667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb4 You can download the resources and finished project her on GitHub: 
+\f2 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 \ul \ulc5 https://github.com/PacktPublishing/Animating-SwiftUI-Applications\AppleTypeServices \cb4 \ulnone \'a0
+\f0\fs32 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f1\b\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Animating gear cog images
+\f0\b0\fs32 \AppleTypeServices \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 In Swift there are three axis we can animate with, the X, Y and Z axis. In this section, we will animate a gear image around the  Z-axis. We will make separate files, as we have done before, and piece all the files together in the ContentView to create the final animation.\
+Let\'92s start by creating a new project, i\'92m calling it \'93Gears and Belts\'94, and save it to your desktop.\
+We need to add the images that the project needs, so go ahead and download them form the gitHub repo for this project, and unzip them.\
+Next, open the assets catalog, and drag and drop the images into there.\
+Ok, we have the images we need, let\'92s start by making a SwiftUI file that will handle making all the gears we need. To do this, as before, come up to File, New, File, and choose the SwiftUI View template. Or you can use the mac shortcut \'93Command N\'94 to get to the same place quicker. Give this file the name \'93GearView\'94, and press \'93Create\'94.\
+We will start filling out this file by first adding the variables thats needed to make and animate gears images.\
+\
+Let\'92s start with the State var that keeps track of the animations state, the state being whether the animation is in motion or not. Add this @State var to the the file:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf7 \cb8 @State\cf9  
+\f4\b \cf10 private
+\f3\b0 \cf9  
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 rotateGear\cf9  = 
+\f4\b \cf10 false\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs32 \cf0 \cb1 This var will rotate the gear image so im calling it rotateGear. And then setting it to false which means the animation will start off as inactive until this variable gets set to true.\
+The next var will be of type string, and we can use this to set the name of the gear image:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f4\b\fs36 \cf10 \cb8 var
+\f3\b0 \cf9  \cf11 gearImage\cf9 : \cf7 String\cf9  = \cf12 ""\
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0\fs32 \cf0 \cb1  If you look back into the assets catalog, you will see that you placed three different types of gears in there, a single gear, a double gear, and a worm gear. So when it comes time to call all these files in the ContentView, this variable will help save time as all we need to do it to type in the name of the gear we want to use. Next we need to be able to set the size of the gear depending on what it will do, here\'92s another var to handle that:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f4\b\fs36 \cf10 \cb8 var
+\f3\b0 \cf9  \cf11 gearWidth\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0\
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0\fs32 \cf0 \cb1 You might be wondering why we are setting the width of the gear, but how about the height? Well, the gear images we are using are circles, except for the worm gear, but more on that when we create the worm gear file, but as you know, circles only need one dimension, the width, or height, because circles have a diameter that is always the same weather its measuring the width, or the height. And its being set to 0 but when this file gets called in the ConteView, it will be set to a value that will create any size gear needed, and there will be quite a few different sizes in this projects.\
+\
+Ok, continuing with the vars need for this file, lets add a variable to hold the degrees needed to turn a round object:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f4\b\fs36 \cf10 \cb8 var
+\f3\b0 \cf9  \cf11 gearDegrees\cf9 : \cf7 Double\cf9  = \cf13 0.0\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0\fs32 \cf0 \cb1 \
+This is called gearDegrees, and again set to 0, which will change for the gear needed. To turn the gear one revolution, we will be setting them to 360 degrees later, and the repeat the animation so they continue to turn as long as the app is running.\
+\
+We also will be placing gears all around the screen, so how about a couple of vars to handle the location of these gears, two of them to set the X and Y location:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f4\b\fs36 \cf10 \cb8 var
+\f3\b0 \cf9  \cf11 offsetGearX\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0\cf9 \
+
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 offsetGearY\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0\
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0\fs32 \cf0 \cb1 Now we can put them anywhere on the screen using the X and Y offset vars.\
+\
+Next we need to be able to rotate the gears, and later the belts to different orientations in relation to its surroundings\'85so lets add a var that be in charge of setting that value:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f4\b\fs36 \cf10 \cb8 var
+\f3\b0 \cf9  \cf11 rotateDegrees\cf9 : \cf7 Double\cf9  = \cf13 0.0\
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0 \cf14 Then a var to set the duration of the spinning gear, meaning how long it takes to finish one revolution:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 duration\cf9 : \cf7 Double\cf9  = \cf13 0.0\
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0 \cf14 So for example if we set the duration to seven, that means it will take seven seconds for the gear to turn one full revolution.
+\fs32 \cf0 \cb1 \
+\
+And then finally for this file three more variables to set the X, Y, and Z axis position of the gear:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f4\b\fs36 \cf10 \cb8 var
+\f3\b0 \cf9  \cf11 xAxis\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0\cf9 \
+
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 yAxis\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0\cf9 \
+
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 zAxis\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0
+\f0\fs32 \cf0 \cb1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+\cf0 Each of these variables will control the axis that the gear rotates on. The axis is what
+\f5\fs34 \cf2 \expnd0\expndtw0\kerning0
+ allows us to rotate an object in three dimensions which will create perspective, and the effect of depth to the scene. 
+\f0\fs32 \cf0 \kerning1\expnd0\expndtw0 I appropriately named them xAxis, yAxis and zAxis. They will be used in the \'93degrees\'94 function and are of type CGFloat. \
+\
+Let\'92s now add the code into the body of the struct and make our first gear.\
+First, a ZStack to hold all of the views we need to add:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8  \cf7 ZStack\cf9  \{\
+        \}
+\f0\fs32 \cf0 \cb1 \
+Then the image initializer that will place a gear image on the screen, lets put it in the ZStack:\
+
+\f3\fs36 \cf7 \cb8 ZStack\cf9  \{\
+    \cf7 Image\cf9 (\cf15 gearImage\cf9 )\
+       \}
+\f0\fs32 \cf0 \cb1 \
+The gearImage variable has been initialized to an empty string, this is what we want because we can pass in different gear images as needed.\
+Now we need several modifiers to size and place the gear image, as well as the animation modifiers to make the gear image turn. Add the following code and we can go over what its doing:\
+
+\f3\fs36 \cf7 \cb8 ZStack\cf9  \{\
+            \cf7 Image\cf9 (\cf15 gearImage\cf9 )\
+                .\cf16 resizable\cf9 ()\
+                .\cf16 aspectRatio\cf9 (\cf16 contentMode\cf9 : .\cf16 fit\cf9 )\
+                .\cf16 frame\cf9 (\cf16 width\cf9 : \cf15 gearWidth\cf9 )\
+                .\cf16 rotationEffect\cf9 (.\cf16 degrees\cf9 (\cf15 rotateGear\cf9  ? \cf15 gearDegrees\cf9  : \cf13 0\cf9 ))\
+                .\cf16 animation\cf9 (\cf7 Animation\cf9 .\cf16 linear\cf9 (\cf16 duration\cf9 : \cf15 duration\cf9 ).\cf16 repeatForever\cf9 (\cf16 autoreverses\cf9 : 
+\f4\b \cf10 false
+\f3\b0 \cf9 ), \cf16 value\cf9 : \cf15 rotateGear\cf9 )\
+                .\cf16 rotation3DEffect\cf9 (\
+                    .\cf16 degrees\cf9 (\cf15 rotateDegrees\cf9 ),\cf16 axis\cf9 : (x: \cf15 xAxis\cf9 , y: \cf15 yAxis\cf9 , z: \cf15 zAxis\cf9 ))\
+                .\cf16 offset\cf9 (\cf16 x\cf9 : \cf15 offsetGearX\cf9 , \cf16 y\cf9 : \cf15 offsetGearY\cf9 )\
+        \}
+\f0\fs32 \cf0 \cb1 \
+Firstly, we know we need to give the image the ability to resize, and thats what the resizable modifier does. \
+Then we want to 
+\f5\fs34 \cf2 \expnd0\expndtw0\kerning0
+constrains the gear images dimensions with the \'93fit\'94 aspect ratio option, 
+\fs32 as we have seen, this option resizes the image so it fits within the available space, both vertically and horizontally.
+\fs34  The other option is \'93fill\'94, but using \'93fill\'94 here would let the image resize so it occupies all available space, both vertically and horizontally, and thats too big for this project.\
+The frame of the image is being set with the gearWidth variable, which has been initialized to 0. This way we can simply pass in whatever value we need to create any size gear.\
+The next line if code is calling the rotationEffect
+\f0\fs32 \cf0 \kerning1\expnd0\expndtw0  modifier. This will rotate the gearImage by a value we pass in. This modifier will only rotate the gear image when the rotateGear var becomes true, otherwise the value \'930\'94 gets used, which means no rotation.\
+The next line is the animation modifier. We\'92re using a linear animation, and the duration will depend on the value that's held in the duration variable. We want the animation to repeat forever, and we don't want it to reverse itself. And it's the value parameter that does the actual work here, this parameter applies the given value to the view.\
+The next modifier is an interesting one here, this 
+\fs36 r
+\f5\fs34 \cf2 \expnd0\expndtw0\kerning0
+otates a view in three dimensions around the given axis. The amount of rotation will be determined by the degrees modifier that is being used with in it, and the values that get passed into the X, Y, and Z parameters.
+\f6\b\fs22 \cf0 \
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth9200\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f5\b0\fs38 \cf2 Finally the gear image will need to be placed somewhere on the screen, and for that placement, we can use the help of the offset modifier. This modifier has two parameters, X and Y, and the values will be determined but the offsetGearX and the offsetGearY variables.\cell \lastrow\row
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs32 \cf0 \kerning1\expnd0\expndtw0 With the modifiers all in place, we only need to start the animation, so lets add the following code at the end of the ZStacks closing brace:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 .\cf16 onAppear\cf9 () \{\
+            \cf15 rotateGear\cf9 .\cf16 toggle\cf9 ()\
+        \}.\cf16 shadow\cf9 (\cf16 color\cf9 : .\cf16 black\cf9 , \cf16 radius\cf9 : \cf13 1\cf9 , \cf16 x\cf9 : \cf13 0\cf9 , \cf16 y\cf9 : \cf13 0\cf9 )
+\f0\fs32 \cf0 \cb1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+The onAppear modifier, as we have seen before, will run the code in its body the the scene first appears. In the code we want to run is to toggle the rotateGear variable to true to start the animation.\
+I'm also adding a little bit of black shadow to the gear image, which gives it a nicer look around its border.\
+\
+With everything we coded so far, yet we still don't see any image in the previews\'85 Let's fix that and add some values. Put the following in code in the 
+\f3\fs36 \cf17 \cb8 GearView_Previews 
+\f0\fs32 \cf0 \cb1 so we can see the animation work:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8  \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "doubleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 100\cf9 , \cf15 gearDegrees\cf9 : \cf13 360\cf9 , \cf15 offsetGearX\cf9 : \cf13 0\cf9 , \cf15 offsetGearY\cf9 : \cf13 0\cf9 , \cf15 duration\cf9 : \cf13 5\cf9 )\
+            .\cf16 previewLayout\cf9 (.\cf16 fixed\cf9 (\cf16 width\cf9 : \cf13 200\cf9 , \cf16 height\cf9 : \cf13 200\cf9 ))
+\f0\fs32 \cf0 \cb1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+We're just filling out the GearView struct with values. Setting the gearImage to the doubleGear picture that's in the asset catalog, Setting the width and degrees for the gear, and we're not worried about the offset here, by setting it to zero it'll just stay in the middle. An adoration of five seconds, which means it'll take five seconds for the gear to spend one complete revolution.\
+\
+With all that in place now you can run the previews and check it out\'85 Also noticed that I'm setting a fixed width and height for the preview window as we don't need a full size screen to display it, 200 x 200 is more than enough room for the gear to do it's thing.\
+Now with our gear in place and this file complete, anytime we need to make a gear anywhere in the project, all we have to do is call this gearView struct and pass in the values to create a custom gear.\
+So this file will handle making our gears and turning them, but there is one gear that we won't be able to turn in any natural way, because it's not a circular shape, and that's a worm gear\'85 i\'92ll explain what a worm gear is, and how to make it turn, or at least make it look like its turning, in the next section.\
+\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f1\b\fs45\fsmilli22667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Adding a worm gear and animate it using shadows
+\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f0\b0\fs39\fsmilli19667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 With our current code, we can now create any size round gear we need, and place them anywhere on the screen. But i want to add another type of gear, which isn\'92t really round, but more cylindrical. Its called a worm gear. Worm gears look like a big screw without a top on it, and they\'92re used in equipment and machines where strength is an important factor because they are very durable, and can handle a lot of torque. \
+If we add a worm gear image to the project and animate it like we did with the round gears, it  wouldn\'92t work very well, simply because the worm gear image is not a round shape. So how can we make an irregularly shaped image appear like its turning? The answer, is a little bit of trickery. What we can do is place small rectangles over certain parts of the worm gear image and animate those rectangles instead, which will create the illusion turning or spinning.
+\f1\b\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0\b0\fs38 \AppleTypeServices \cf14 \cb8 \kerning1\expnd0\expndtw0 So let\'92s do that, we're going to create four small rectangles, and we'll animate their opacity, and make them move up and down, and then overlay them onto the shiny part of the worm gear image\'85 It will appear as if the gear is turning.\
+We\'92ll do all this in a separate file\'85press Command N to open the \'93New File\'94 dialog window, and choose \'93SwiftUI View\'94, name that view \'93 
+\f1\b WormGearView
+\f0\b0 \'94.\
+Inside this file, we will start off with adding four State properties, one for each rectangle we need. Add this code inside the WormGear struct:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf7     @State\cf9  
+\f4\b \cf10 private
+\f3\b0 \cf9  
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 rect1\cf9  = 
+\f4\b \cf10 false
+\f3\b0 \cf9 \
+    \cf7 @State\cf9  
+\f4\b \cf10 private
+\f3\b0 \cf9  
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 rect2\cf9  = 
+\f4\b \cf10 false
+\f3\b0 \cf9 \
+    \cf7 @State\cf9  
+\f4\b \cf10 private
+\f3\b0 \cf9  
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 rect3\cf9  = 
+\f4\b \cf10 false
+\f3\b0 \cf9 \
+    \cf7 @State\cf9  
+\f4\b \cf10 private
+\f3\b0 \cf9  
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 rect4\cf9  = 
+\f4\b \cf10 false
+\f0\b0\fs38 \cf14 \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f1\b\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0\b0\fs38 \AppleTypeServices \cf14 \cb8 \kerning1\expnd0\expndtw0 These will track the state of the animation. Now our main ZStack, and another one inside that to display the worm gear image:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9  \cf7 ZStack\cf9  \{\
+    \cf7 ZStack\cf9  \{\
+                \cf7 Image\cf9 (\cf12 "wormGear"\cf9 ).\cf16 resizable\cf9 ().\cf16 frame\cf9 (\cf16 width\cf9 : \cf13 100\cf9 , \cf16 height\cf9 : \cf13 75\cf9 )\
+           \}\
+        \}
+\f1\b\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0\b0\fs38 \AppleTypeServices \cf14 \cb8 \kerning1\expnd0\expndtw0 The image initializer declares the worm gear, and resize is it to a width and height that we can use. \
+Now to create the first rectangle that we need to place over the worm gear\'85 We will place these small rectangles strategically over the shiny parts of the image. Add the following code for the first rectangle:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf7 HStack\cf9  \{\
+                    \cf7 Rectangle\cf9 ()\
+                        .\cf16 frame\cf9 (\cf16 width\cf9 : \cf13 4\cf9 , \cf16 height\cf9 : \cf13 40\cf9 )\
+                        .\cf16 foregroundColor\cf9 (.\cf16 black\cf9 )\
+                        .\cf16 cornerRadius\cf9 (\cf13 5\cf9 )\
+                        .\cf16 opacity\cf9 (\cf15 rect1\cf9  ? \cf13 0\cf9  : \cf13 0.3\cf9 )\
+                        .\cf16 offset\cf9 (\cf16 x\cf9 : \cf13 2\cf9 , \cf16 y\cf9 : \cf15 rect1\cf9  ? \cf13 14\cf9  : -\cf13 8\cf9 )\
+                        .\cf16 animation\cf9 (\cf7 Animation\cf9 .\cf16 easeInOut\cf9 (\cf16 duration\cf9 : \cf13 0.5\cf9 ).\cf16 repeatForever\cf9 (\cf16 autoreverses\cf9 : 
+\f4\b \cf10 true
+\f3\b0 \cf9 ), \cf16 value\cf9 : \cf15 rect1\cf9 )\
+                        .\cf16 rotationEffect\cf9 (.\cf16 degrees\cf9 (-\cf13 4\cf9 ), \cf16 anchor\cf9 : .\cf16 top\cf9 )\
+                        .\cf16 onAppear\cf9 ()\{\
+                            \cf15 rect1\cf9 .\cf16 toggle\cf9 ()\
+                        \}\
+        \}
+\f1\b\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0\b0\fs38 \AppleTypeServices \cf14 \cb8 \kerning1\expnd0\expndtw0 Now the rectangles will be placed in an HStack here because we want to put them side-by side, going from left to right across the gear. We're using the standard modifiers we've used before, to set the frame of this rectangle, you could see the width is only four points so it's a very small rectangle, a height is somewhat bigger. We're making the color black and giving it a slight corner . And then the opacity of this rectangle will depend on whether the animating variable called wrecked one is true or not\'85 When the rect1 property becomes true, then we give this rectangle some slight opacity, 0.3, out of a scale of 1.0. This makes it a little more visible\'85 When rect1 is false, then let's remove all opacity and make it hidden.\
+The next line of code uses the offset modifier to place this rectangle directly over the first shiny part of this worm gear on the left side. And this offset modifiers also responsible for moving the small rectangle up and down on the Y axis either a 14 points when rect1 is true, or it will move the rectangle down to -8 points when it becomes false. So the effect we're going for here is to animate these tiny rectangles up and down at the same time fade them in and out over the shiny part, this will create the loot illusion that the part is turning.\
+Next we add the animation, with an ease in out timing curve, and a half second duration, then let's repeat this forever and autoreverse when the animation finishes in one direction.\
+The next line of code uses the rotation effect modifier to rotate this small rectangle exactly where we want it on the worm gear. And then we're setting the anchor at the top. The anchor
+\f5\fs42 \cf2 \cb1 \expnd0\expndtw0\kerning0
+ is the location that defines a point at which the rotation is anchored to.
+\f1\b\fs61\fsmilli30667 \AppleTypeServices\AppleTypeServicesF65539 \cb3 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f0\b0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 And finally in the onAppear modifier, we toggle rect1 so the animation starts when the view appears.\
+Let's go ahead and run that and you can see the results in the previews:\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f1\b \AppleTypeServices\AppleTypeServicesF65539 \cf2 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \AppleTypeServices \cf0 \cb1 \kerning1\expnd0\expndtw0 {{\NeXTGraphic rect.png \width5200 \height6600 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}
+\f1\b\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f0\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 Looking at the image its really hard to see the rectangle, but it's just a faint thin rectangle, third tooth in. But to see it better, let's remove the name of the worm gear from the image initializer so that gets deleted from the previous, and then go ahead and run the project again and this is what you'll see:
+\f1\b \AppleTypeServices\AppleTypeServicesF65539 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \AppleTypeServices \cf0 \cb1 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Rect1.png \width3720 \height6800 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f0\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 In the previous you should see the rectangle moving up and down, and fading in and out. Similar to the illustration above. If you notice the location of this rectangle is toward the middle part of the worm gear\'85 We want this over the first tooth of this gear on the left side, and that will happen when we add the other rectangles into this HStack. That's because the HStack lines everything up from left to right, but since we only have one rectangle in the stack, the HStack places it in the middle for now.\
+OK let's add rectangle number two into the HStack, just under the first rectangle:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \AppleTypeServices \cf9 \cb8 \kerning1\expnd0\expndtw0                     \cf7 Rectangle\cf9 ()\
+                        .\cf16 frame\cf9 (\cf16 width\cf9 : \cf13 4\cf9 , \cf16 height\cf9 : \cf13 40\cf9 )\
+                        .\cf16 foregroundColor\cf9 (.\cf16 black\cf9 )\
+                        .\cf16 cornerRadius\cf9 (\cf13 5\cf9 )\
+                        .\cf16 opacity\cf9 (\cf15 rect2\cf9  ? \cf13 0\cf9  : \cf13 0.3\cf9 )\
+                        .\cf16 offset\cf9 (\cf16 x\cf9 : \cf13 7\cf9 , \cf16 y\cf9 : \cf15 rect2\cf9  ? -\cf13 15\cf9  : -\cf13 8\cf9 )\
+                        .\cf16 animation\cf9 (\cf7 Animation\cf9 .\cf16 easeInOut\cf9 (\cf16 duration\cf9 : \cf13 0.5\cf9 ).\cf16 repeatForever\cf9 (\cf16 autoreverses\cf9 : 
+\f4\b \cf10 true
+\f3\b0 \cf9 ), \cf16 value\cf9 : \cf15 rect2\cf9 )\
+                        .\cf16 rotationEffect\cf9 (.\cf16 degrees\cf9 (-\cf13 8\cf9 ))\
+                        .\cf16 onAppear\cf9 ()\{\
+                            \cf15 rect2\cf9 .\cf16 toggle\cf9 ()\
+                        \}
+\f0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f1\b \AppleTypeServices\AppleTypeServicesF65539 \cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f0\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 This code is almost identical to what we've just added for the first rectangle. The difference here is we are offsetting the rectangle to a different location over the gear image, and the rotation is slightly different so it can be lined it up over the next shiny part of the gear.\
+Run the code and you'll see two animating rectangles\'85 They're not quite centered over the first and second shiney tooth of the gears yet, because we have two more rectangles to add, and then the H stack will center each animating rectangle perfectly for us.\
+Before we continue and add the third and fourth rectangle, take a look at the first three modifiers of these two rectangles that we just added. They both have identical values in them, so we are repeating the code here, which is not really a good thing when programming. Since the values don't change in these modifiers, and we will use them in all four rectangles, let's make a custom modifier that we can put these three modifiers in, and shorten our code a little bit. 
+\f5\fs39\fsmilli19600 \AppleTypeServices \cf19 \cb1 To create a custom modifier, we need to create a struct that conforms to the 
+\f4\b \cf20 ViewModifier
+\f5\b0 \cf19  protocol. This protocol has one requirement, which is to implement a method called body, that will accept our content, and then must return 
+\f4\b \cf20 some View
+\f5\b0 \cf19 . We can create custom modifier at the bottom of the file. Moving outside of the worm gear file completely, and coming to the bottom, add this struct:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f4\b\fs36 \cf10 \cb8 \kerning1\expnd0\expndtw0 struct
+\f3\b0 \cf9  \cf17 RectModifiers\cf9 : \cf7 ViewModifier\cf9  \{\
+    
+\f4\b \cf10 func
+\f3\b0 \cf9  \cf11 body\cf9 (\cf11 content\cf9 : \cf7 Content\cf9 ) -> 
+\f4\b \cf10 some
+\f3\b0 \cf9  \cf7 View\cf9  \{\
+        content\
+            .\cf16 frame\cf9 (\cf16 width\cf9 : \cf13 4\cf9 , \cf16 height\cf9 : \cf13 40\cf9 )\
+            .\cf16 foregroundColor\cf9 (.\cf16 black\cf9 )\
+            .\cf16 cornerRadius\cf9 (\cf13 5\cf9 )\
+    \}\
+\}
+\f0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f5\fs39\fsmilli19600 \AppleTypeServices \cf19 \cb1 custom I called it wrecked modifiers, and you can see where implementing the body method, that's the requirement needed to satisfy this protocol, end it will return some view. Placed in it the three modifiers that we were repeating in our code\'85 The ones that weren't changing in value. Now all we have to do is come back to our rectangle that we created at the top, and remove those three modifiers, and instead, call this code:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0 .\cf16 modifier\cf9 (\cf18 RectModifiers\cf9 ())\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f5\fs39\fsmilli19600 \AppleTypeServices \cf19 \cb1 It's called "modifier" and we pass in the name of our newly created struct, RectModifiers, into it when we call it. Our new modifier struct can hold as many modifiers as we want to put in there.\
+Modifiers that don't change in value are probably a good idea because it reduces our code, especially if you have many views you're adding, for example if we were to add 20 or 30 rectangles here, this would help reduce a lot of the code we need to write.\
+Now we can proceed to adding the final two rectangles to help make this gear turn, here's the code for those last two:\
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0 \
+                    \cf7 Rectangle\cf9 ().\cf16 modifier\cf9 (\cf18 RectModifiers\cf9 ())\
+                        .\cf16 opacity\cf9 (\cf15 rect3\cf9  ? \cf13 0\cf9  : \cf13 0.3\cf9 )\
+                        .\cf16 offset\cf9 (\cf16 x\cf9 : \cf13 5\cf9 , \cf16 y\cf9 : \cf15 rect3\cf9  ? -\cf13 5\cf9  : -\cf13 10\cf9 )\
+                        .\cf16 animation\cf9 (\cf7 Animation\cf9 .\cf16 easeInOut\cf9 (\cf16 duration\cf9 : \cf13 0.5\cf9 ).\cf16 repeatForever\cf9 (\cf16 autoreverses\cf9 : 
+\f4\b \cf10 true
+\f3\b0 \cf9 ), \cf16 value\cf9 : \cf15 rect3\cf9 )\
+                        .\cf16 rotationEffect\cf9 (.\cf16 degrees\cf9 (-\cf13 8\cf9 ), \cf16 anchor\cf9 : .\cf16 top\cf9 )\
+                        .\cf16 onAppear\cf9 ()\{\
+                            \cf15 rect3\cf9 .\cf16 toggle\cf9 ()\
+                        \}\
+\
+                    \cf7 Rectangle\cf9 ().\cf16 modifier\cf9 (\cf18 RectModifiers\cf9 ())\
+                        .\cf16 opacity\cf9 (\cf15 rect4\cf9  ? \cf13 0\cf9  : \cf13 0.3\cf9 )\
+                        .\cf16 offset\cf9 (\cf16 x\cf9 : \cf13 4\cf9 , \cf16 y\cf9 : \cf15 rect4\cf9  ? -\cf13 10\cf9  : -\cf13 10\cf9 )\
+                        .\cf16 animation\cf9 (\cf7 Animation\cf9 .\cf16 easeInOut\cf9 (\cf16 duration\cf9 : \cf13 0.5\cf9 ).\cf16 repeatForever\cf9 (\cf16 autoreverses\cf9 : 
+\f4\b \cf10 true
+\f3\b0 \cf9 ), \cf16 value\cf9 : \cf15 rect4\cf9 )\
+                        .\cf16 rotationEffect\cf9 (.\cf16 degrees\cf9 (-\cf13 7\cf9 ), \cf16 anchor\cf9 : .\cf16 top\cf9 )\
+                        .\cf16 onAppear\cf9 ()\{\
+                            \cf15 rect4\cf9 .\cf16 toggle\cf9 ()
+\f0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f5\fs39\fsmilli19600 \AppleTypeServices \cf19 \cb1 nd before we try it out, add let's add some shadow to these moving rectangles\'85 To help make them a little more pronounced, add this following code at the end of the closing brace of the first main ZStack:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0  .\cf16 shadow\cf9 (\cf16 color\cf9 : .\cf16 black\cf9 , \cf16 radius\cf9 : \cf13 0.4\cf9 , \cf16 x\cf9 : \cf13 0.0\cf9 , \cf16 y\cf9 : \cf13 1\cf9 )
+\f1\b\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f5\b0\fs39\fsmilli19600 \AppleTypeServices \cf19 \cb1 we a here we use the shadow modifier to create a black shadow to go over each rectangle, I'm making this shadow a little less than half an inch in radius, and one point on the Y axis\'85 So that will be the most pronounce part of the shadow\'85 Play around with these numbers so you can see how they affect the shadow and where they move the shadow to.\
+And with that this file is now complete, and run the project, and we have a worm gear that actually looks like it's turning. Noticed that each rectangle has lined up completely over the teeth of the worm gear starting from the left and going to the right. And the shiny parts are being covered up and exposed over and over again with a nice even pace, which is actually about how fast mini worm gears work\'85 They normally don't turn very fast, but can carry a great load on them.\
+\
+This file is now complete, up next we\'92re going to make a marching ants effect that we can use to simulate a moving gear chain. We can accomplish that using the dashPhase initializer.
+\f1\b\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \
+\
+Create a marching ants effect that we will turn into a moving gear chain by using the dashPhase stroke initializer.\
+
+\f5\b0\fs39\fsmilli19600 \AppleTypeServices \cf19 \cb1 We have our gear cogs that we can use now anywhere in the project, and we have a worm gear that we can use, both are now animated.\
+Next we need to make some belts, that can be used to turn the gears, and connect the gears together. \
+We're going to do that here and create a belt to wrap around the gear. What we are actually doing is creating a marching ants effect, which is quite common on computers, and you have probably used before. Anytime you took your mouse and outlined a view to signal object selection, you were using the marching ants effect. \
+\
+Let's start this section by adding another new file, and we\'92ll call it BeltView.
+\f1\b\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f0\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 As we do, we need variables to make everything work, there are 10 of them, put these 10 variables right into the BeltView struct:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \AppleTypeServices \cf7 \cb8 \kerning1\expnd0\expndtw0 @State\cf9  
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 animateBelt\cf9 : \cf7 Bool\cf9  = 
+\f4\b \cf10 false
+\f3\b0 \cf9 \
+    
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 beltWidth\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0\cf9 \
+    
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 beltHeight\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0\cf9 \
+    
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 offsetBeltX\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0\cf9 \
+    
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 offsetBeltY\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0\cf9 \
+    
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 dashPhaseValue\cf9 : \cf7 CGFloat\cf9  = \cf13 40\cf9 \
+    
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 rotateDegrees\cf9 : \cf7 Double\cf9  = \cf13 0.0\cf9 \
+    \
+    
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 xAxis\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0\cf9 \
+    
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 yAxis\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0\cf9 \
+    
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 zAxis\cf9 : \cf7 CGFloat\cf9  = \cf13 0.0
+\f1\b\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f0\b0 \AppleTypeServices\AppleTypeServicesF65539 \cf2 Each one of these variables are in charge of a specific task, starting with the animateBelt variable, that's our state var to keep track of the animation for the belt. We have a beltWidth variable, thats so we can set the width of the belt. We also need to be able to set the height, so that's what the beltHeight variable will do. Then we\'92ll want to locate the belt in specific areas on the screen, so the offsetBeltX and offsetBeltY will do that. \
+Next there's one called dashPhaseValue, this variable will be in charge of actually designing the belt, things like how far do we want to space the belt segments apart from each, how thick should they be, and so forth.\
+Also added is a rotateDegrees variable, this will be used after we position the belt where we want it, we will probably need to rotate it either horizontally or vertically. So we can do that by passing in a degree number using this variable.\
+And finally three variables to orient the belt on the X, Y or Z axis. You will see these three variables come in to play when we start piecing together all these separate files into one file, the ContentView.
+\f1\b \AppleTypeServices\AppleTypeServicesF65539 \
+
+\f0\b0 \AppleTypeServices\AppleTypeServicesF65539 Now we can move into the body of the struct and start adding the code to create the belt. There's not a lot of code to make this belt, so let's start by adding a ZStack to hold our views:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \AppleTypeServices \cf9 \cb8 \kerning1\expnd0\expndtw0  \cf7 ZStack\cf9  \{\
+        \}
+\f0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+Now next we want to create the shape of the belt, if you look at most belts or chains that are gear driven, they resemble a shape similar to a capsule. And luckily, SWIFTUI gives a capsule shape that we can use. Add the following capsule code, including its modifiers inside of the ZStack:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \AppleTypeServices \cf9 \cb8 \kerning1\expnd0\expndtw0             \cf7 Capsule\cf9 ()\
+                .\cf16 trim\cf9 (\cf16 from\cf9 : \cf13 0\cf9 , \cf16 to\cf9 : \cf13 1\cf9 )\
+                .\cf16 stroke\cf9 (\cf7 Color\cf9 .\cf16 black\cf9 , \cf16 style\cf9 : \cf7 StrokeStyle\cf9 (\cf16 lineWidth\cf9 : \cf13 7\cf9 , \cf16 lineJoin\cf9 : .\cf16 round\cf9 , \cf16 dash\cf9 : [\cf13 5\cf9 , \cf13 1.4\cf9 ], \cf16 dashPhase\cf9 : \cf15 animateBelt\cf9  ? \cf15 dashPhaseValue\cf9  : \cf13 0\cf9 ))\
+                .\cf16 frame\cf9 (\cf16 width\cf9 : \cf15 beltWidth\cf9 , \cf16 height\cf9 : \cf15 beltHeight\cf9 )\
+                .\cf16 animation\cf9 (\cf7 Animation\cf9 .\cf16 linear\cf9 (\cf16 duration\cf9 : \cf13 3\cf9 ).\cf16 repeatForever\cf9 (\cf16 autoreverses\cf9 : 
+\f4\b \cf10 false
+\f3\b0 \cf9 ).\cf16 speed\cf9 (\cf13 3\cf9 ), \cf16 value\cf9 : \cf15 animateBelt\cf9 )
+\f0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+This is only about five lines of code, but it does a lot of work here. First we declare the capsule shape that we need, and then use the stroke modifier on it, this modifier does quite a bit and is also responsible for designing the belt. It's first parameter will give the belt color, here we using black. The next parameter is the strokeStyle parameter, in here we pass in a StrokeStyle struct. This StrokeStyle struct has some parameters of its own that will be needing values to help style the belt. The first one is the lineWidth parameter. This one is fairly self-explanatory, it means how wide do we want to make the chain. I think seven points as a value it's a good fit for the size of our chains width. \
+There's also a lineJoin parameter, this is a value that determines how the segments of the chain will join together. There are three options we could use, round, bevel, and miter. I thought ours line segments would look best using the round option. But of course as always, feel free to experiment with all these values and numbers to get the best look for you.\
+The next parameter is called dash, this is responsible for the length of the segments that's used to create the line, or belt, and the gap between those segments. This parameter takes an array of two values. The first value will determine the length of the segment, a larger number makes the segments bigger, a smaller number makes the segment smaller. Then second value in the array determines the gap size between the segments. A larger number creates a larger gap, smaller number, a smaller gap.\
+The next modifier is the frame, it'll set the width and height of the whole belt.\
+How are you the animation to the bell. It's going to have a duration of three seconds to complete one revolution, and the speed will have a value of 3. Finally we want the belt to turn in only one direction so auto reverse is set to false. \
+\
+Now we need to add the onAppear modifier so we can start the animation when the app loads up, add the following code right under the existing code:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \AppleTypeServices \cf9 \cb8 \kerning1\expnd0\expndtw0       .\cf16 onAppear\cf9  \{\
+                    \cf15 animateBelt\cf9 .\cf16 toggle\cf9 ()\
+                \}
+\f0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+This code toggles the animateBelt property to true, kicking off the belt animation.\
+\
+There's only one last bit of code we need to add to finish off the styling of the belt,  and rotate it to the proper angle for the gears. Coming out of ZStack just after its closing brace, add this code:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \AppleTypeServices \cf9 \cb8 \kerning1\expnd0\expndtw0         .\cf16 shadow\cf9 (\cf16 color\cf9 : .\cf16 black\cf9 , \cf16 radius\cf9 : \cf13 10\cf9 , \cf16 x\cf9 : \cf13 1\cf9 , \cf16 y\cf9 : \cf13 0\cf9 )\
+        .\cf16 rotationEffect\cf9 (.\cf16 degrees\cf9 (\cf15 rotateDegrees\cf9 ), \cf16 anchor\cf9 : .\cf16 center\cf9 )\
+        .\cf16 offset\cf9 (\cf16 x\cf9 : \cf15 offsetBeltX\cf9 , \cf16 y\cf9 : \cf15 offsetBeltY\cf9 )
+\f0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+This code will act on everything that's in the Z stack, because its been put after it's closing brace. \
+I wanted to add a shadow to the belt to make it more pronounced, and the shadow modifier accomplishes that for us, it really makes the difference between by making the chain pop off the screen. Im using a black colorand a radius of 10, on the X axis. And play around with the colors and these numbers for the shadow\'85 Increasing the radius will make the shadow bigger, increasing the numbers for the X and Y parameters, move the shadow up or down. \\\
+The next modifier we are placing on the entire ZStack is the rotation effect, this will rotate the completed belt to the angle we specify. So when we call these various methods later in the ContentView, we\'92ll pass in different values that'll orient the belt and size it just the way we want to.\
+Finally the offset modifier. This allows us to place the belt anywhere on the screen using the X and Y coordinates.\
+\
+And with that the file is done\'85 Well actually almost done, we don't see anything in the previews yet because we've just added a bunch of different variables into the BeltView struct, but we're not using those variables in the preview struct. Should be able to see all the code that was just written in the previews, let's update the previous struct to this following code:\
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f4\b\fs36 \AppleTypeServices \cf10 \cb8 \kerning1\expnd0\expndtw0 struct
+\f3\b0 \cf9  \cf17 BeltView_Previews\cf9 : \cf7 PreviewProvider\cf9  \{\
+    
+\f4\b \cf10 static
+\f3\b0 \cf9  
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 previews\cf9 : 
+\f4\b \cf10 some
+\f3\b0 \cf9  \cf7 View\cf9  \{\
+        \cf18 BeltView\cf9 (\cf15 animateBelt\cf9 : 
+\f4\b \cf10 true
+\f3\b0 \cf9 , \cf15 beltWidth\cf9 : \cf13 380\cf9 , \cf15 beltHeight\cf9 : \cf13 48\cf9 , \cf15 offsetBeltX\cf9 : \cf13 0\cf9 , \cf15 offsetBeltY\cf9 : \cf13 0\cf9 , \cf15 rotateDegrees\cf9 : \cf13 90\cf9 )\
+            .\cf16 previewLayout\cf9 (.\cf16 fixed\cf9 (\cf16 width\cf9 : \cf13 100\cf9 , \cf16 height\cf9 : \cf13 400\cf9 ))\
+    \}\
+\}
+\f0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+Now when you open your canvas, you can click the run button on the bottom and see the belt in action. It's turning clockwise, it has a nice style and spacing to fit our gears later, and the shadow helps it really pop off the screen.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \AppleTypeServices \cf0 \cb1 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Screen Shot 2022-08-15 at 11.05.43 AM.png \width7600 \height14800 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs36 \cf0 OK that's another file under our belt, pun intended\'85 Let's continue, and in the next section we\'92ll add a gear shaft to the mix. This object will turn a belt, which will turn a fan. 
+\fs53\fsmilli26667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f1\b\fs45\fsmilli22667 \AppleTypeServices \cf2 \cb4 Adding a gear shaft and animating it using shadows
+\f0\b0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cb3 \
+We\'92re continuing to create the separate files we need to produce this gear and belt project\'85so the next file to make will make hold the code that creates a gear shaft. A gear shaft is a cylindrical rod that can have round gears at each end and is used to attach to other gears or belts that will turn together, and ultimately will produce some form of output or work. Also like the worm gear, we will animate the gear shaft by using shadows. This is again because the image we are using is not round, so we cannot rotate it on the Z axis, like the round gears.\
+Let's start off by creating a new file, press command and and create your new SwiftUI file as before, and let's call this one GearShaftView.\
+Then as always let's add the variables we need for this file, for this view, we only need one variable, to track the animation:\
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \AppleTypeServices \cf7 \cb8 \kerning1\expnd0\expndtw0     @State\cf9  
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 animateRect\cf9 : \cf7 Bool\cf9  = 
+\f4\b \cf10 false
+\f0\b0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+Again the state variable that we used to track the animation and start and stop it. \
+We only need about 7 lines of code to add the shaft image, and animate it, here\'92s the code:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f4\b\fs36 \AppleTypeServices \cf10 \cb8 \kerning1\expnd0\expndtw0 var
+\f3\b0 \cf9  \cf11 body\cf9 : 
+\f4\b \cf10 some
+\f3\b0 \cf9  \cf7 View\cf9  \{\
+        \cf7 ZStack\cf9  \{\
+            \cf7 ZStack\cf9  \{\
+                \cf7 Image\cf9 (\cf12 "shaft"\cf9 ).\cf16 resizable\cf9 ().\cf16 frame\cf9 (\cf16 width\cf9 : \cf13 160\cf9 , \cf16 height\cf9 : \cf13 40\cf9 )\
+                               \
+                \cf7 Rectangle\cf9 ().\cf16 frame\cf9 (\cf16 width\cf9 : \cf13 140\cf9 , \cf16 height\cf9 : \cf13 8\cf9 )\
+                    .\cf16 foregroundColor\cf9 (.\cf16 black\cf9 )\
+                    .\cf16 cornerRadius\cf9 (\cf13 5\cf9 )\
+                    .\cf16 opacity\cf9 (\cf15 animateRect\cf9  ? \cf13 0\cf9  : \cf13 0.5\cf9 )\
+                    .\cf16 animation\cf9 (\cf7 Animation\cf9 .\cf16 easeInOut\cf9 (\cf16 duration\cf9 : \cf13 0.5\cf9 ).\cf16 repeatForever\cf9 (\cf16 autoreverses\cf9 : 
+\f4\b \cf10 true
+\f3\b0 \cf9 ), \cf16 value\cf9 : \cf15 animateRect\cf9 )\
+                    .\cf16 onAppear\cf9 () \{\
+                        \cf15 animateRect\cf9 .\cf16 toggle\cf9 ()\
+                    \}.\cf16 offset\cf9 (\cf16 x\cf9 : \cf13 0\cf9 , \cf16 y\cf9 : -\cf13 7\cf9 )\
+            \}\
+        \}\
+    \}
+\f0\fs41\fsmilli20667 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+We restart by bringing the shaft image into the scene, setting a width and height dimension on it. And then we add a rectangle\'85 This is our animating shadow that will move up and down over the shaft. The color is black, then a little bit of a corner radius, and we\'92ll animate the opacity from 0 or no opacity, which means invisible, to a .5 or 50 percent opacity. Just create a nice shadowy rectangle that appears and disappears at the same cadence of the gears and shafts turning. We're using the same type of animation to create that same cadence with adoration of one half a second to complete a revolution, we're auto reversing this animation\'85. If we set auto reverse to false, then the animation would look to abrupt\'85 It needs to auto reverse in order to slide the rectangle back down. And then we start the animation in the onAppear method. Finally let offset the rectangle so it's placed exactly where we want it, over the shaft image, by using the offset modifier.\
+\
+And that completes this file. Go ahead and run this and you'll see this creates a nice animation illusion, it really looks like the cylindrical shaft is turning. Soon when we piece this together in the ContentView, we will put a gear on the end of the shaft and then hook a belt up to that gear. But before that, lets add two more components to the project. We have all these gears and belts that are turning, but there has to be a power source thats doing that, so we can add an image of a motor and put a gear on it, to simulate the source of power. The motor will be the starting point, turning all the belts and gears, and the endpoint will be to make a fan turn, which will be the final component in the project, that's up next.\
+\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f1\b \AppleTypeServices \cf2 \cb4  Animating a fan image
+\fs39\fsmilli19667 \
+
+\f0\b0 The motor and fan are the final components in the project, but the motor we will add when we start putting all these files together inside the ContentView, so let's create the fan now. Create a new SwiftUI file, call it FanView, this is a small file to\'85 We only need two variables, one for the state of the animation, and one to hold the degrees of rotation for the fan, here they are:\
+       
+\f3\fs36 \cf7 \cb8 \kerning1\expnd0\expndtw0 @State\cf9  
+\f4\b \cf10 private
+\f3\b0 \cf9  
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 rotateFan\cf9  = 
+\f4\b \cf10 false
+\f3\b0 \cf9 \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+\cf9     
+\f4\b \cf10 var
+\f3\b0 \cf9  \cf11 degrees\cf9 : \cf7 Double\cf9  = \cf13 360\cf9  * \cf13 4
+\f1\b\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+
+\f0\b0 Then only about four lines of code should wrap this up for the files, then we can move into the ContentView, here's the code to complete the fan:
+\f1\b \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f4\fs36 \cf10 \cb8 \kerning1\expnd0\expndtw0 var
+\f3\b0 \cf9  \cf11 body\cf9 : 
+\f4\b \cf10 some
+\f3\b0 \cf9  \cf7 View\cf9  \{\
+        \cf7 ZStack\cf9  \{\
+        \cf7 Image\cf9 (\cf12 "fan"\cf9 ).\cf16 resizable\cf9 ().\cf16 aspectRatio\cf9 (\cf16 contentMode\cf9 : .\cf16 fit\cf9 ).\cf16 frame\cf9 (\cf16 width\cf9 : \cf13 200\cf9 )\
+            .\cf16 rotationEffect\cf9 (.\cf16 degrees\cf9 (\cf15 rotateFan\cf9  ? \cf15 degrees\cf9  : \cf13 0\cf9 ), \cf16 anchor\cf9 : .\cf16 center\cf9 )\
+            .\cf16 animation\cf9 (\cf7 Animation\cf9 .\cf16 linear\cf9 (\cf16 duration\cf9 : \cf13 4\cf9 ).\cf16 repeatForever\cf9 (\cf16 autoreverses\cf9 : 
+\f4\b \cf10 false
+\f3\b0 \cf9 ), \cf16 value\cf9 : \cf15 rotateFan\cf9 )\
+        \}.\cf16 onAppear\cf9 () \{\
+            \cf15 rotateFan\cf9 .\cf16 toggle\cf9 ()\
+        \}.\cf16 shadow\cf9 (\cf16 color\cf9 : .\cf16 black\cf9 , \cf16 radius\cf9 : \cf13 15\cf9 )\
+    \}
+\f1\b\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+
+\f0\b0 Then inside of the stack we use the image of the fan, resize it, and then we call the rotationEffect modifier on it, and for the degrees parameter, will check to see if the rotateFan variable becomes true, when it does, we can turn the fan on I setting the degrees to 360\'d74. This is a nice speed for the fan to spin given the speed of the gears in belts. We want the fan to spin around it center, so we set the anchor to center, and then we add the animation with a duration of 4, which means here it will spin for revolutions in four seconds. We repeat forever and we don't auto reverse because we want to fan spin in only one direction. Then we kick off the animation using the on appear modifier, and we had a nice heavy shadow around the fan, which is a 15 point radius.
+\f1\b \
+
+\f0\b0 And that completes the fan, and all the files we need, let's now head over to the ContentView and start calling each file inside there.
+\f1\b \
+\
+\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\fs40 \cf2 \cb1 \kerning1\expnd0\expndtw0 Filling out and organizing the ContentView with all the files using Groups, Pragma Marks and the 
+\fs37\fsmilli18667 \AppleTypeServices\AppleTypeServicesF65539 \cb3 \expnd0\expndtw0\kerning0
+ZIndex modifier
+\fs40 \AppleTypeServices \cb1 \kerning1\expnd0\expndtw0  - A
+\fs37\fsmilli18667 \AppleTypeServices\AppleTypeServicesF65539 \cb3 \expnd0\expndtw0\kerning0
+nimating everything on the X,Y, and Z axis
+\fs47\fsmilli23667 \AppleTypeServices \cb4 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f0\b0\fs39\fsmilli19667 \cf2 Ok we accomplished a lot, we have all the files we need to create single and double gears, a worm gear, a gearshift, and a fan. Now let\'92s organize all these files together in the ContentView. \
+We're going to use what's called \'93Pragma Marks\'94, this is a special syntax that titles blocks of code, and puts a very thin line between them make it very easy to look through different segments of your file. \
+Will also use Groups, this can help us further organize all the code into this content view file by 
+\f5\fs38 \cb1 grouping multiple objects like views, scenes, or even commands, into a single unit. We will organize much of the code based on whether it's animating on the X, Y, or Z axis.\
+And then we will use the ZIndex modifier to force a view either to the front or the back of the scene. This is important because sometimes we want one view to be more prominent in the scene and another view to hide behind the scene showing only parts of itself. You'll see how this works when we use it. \
+As always we have the ContentView file already created for us when we started the project, so we don't need to create any new files, so let's go there and start to bring in all the other files into one cohesive place.\
+Moving right into the body property, let's a main ZStack to hold everything, and inside that one let's place another ZStack:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf7 \cb8 \kerning1\expnd0\expndtw0 ZStack\cf9  \{\
+     \cf7 ZStack\cf9  \{\
+            \}\
+       \}
+\f1\b\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f5\b0\fs38 \cf2 \cb1 Now inside the second Z stack, let's add our first organizational structure, the Pragma Mark, this will be for the motor:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0  \cf21 //
+\f4\b \cf22 MARK: - MOTOR
+\f1\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f5\b0\fs38 \cf2 \cb1 Now notice the very thin line that the Pragma Mark creates from one end of the code file to the other:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Pragma Mark line.png \width25120 \height960 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f5\fs38 \cf2 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+This line helps delineate sections of code, along with a nice big title. To make a pragma mark the syntax requires two forward slashes and the word "MARK "in capital letters followed by a colon, that's the part that creates the thin line moving across the file. Then you could write whatever you want after that as the title. \
+The pragma mark does something else very useful behind the scenes, if you look at the top left of your Xcode menu bar, where all the tabs appear, you\'92ll see a \'93body\'94 tab, I highlighted the menu bar with this red box:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Menu Bar.png \width8800 \height1960 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f5\fs38 \cf2 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+The pragma mark created a motor tab at the top, and if you click on it, a drop down menu will open up containing all the pragma marks that you created, clicking any one of them takes you instantly to the code for that part of the file \
+You'll see the usefulness of this when you have dozens or even hundreds of different blocks of code in one file. To navigate through each block very easily, all you have to do is click the tab in the menu bar to bring down the drop-down list, and click the Pragma mark title for what you want to navigate to, and again,  that'll take you to that block of code.\
+OK we have our pragma mark set up for our first part of code, and we titled \'93Motor\'94, so let's add the code that creates the motor in the scene:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f1\b\fs39\fsmilli19667 \cf2 \cb4 \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\b0\fs36 \cf7 \cb8 \kerning1\expnd0\expndtw0 Group\cf9  \{\
+       \cf7 Image\cf9 (\cf12 "motor"\cf9 ).\cf16 resizable\cf9 ().\cf16 aspectRatio\cf9 (\cf16 contentMode\cf9 : .\cf16 fit\cf9 ).\cf16 frame\cf9 (\cf16 width\cf9 : \cf13 140\cf9 , \cf16 height\cf9 : \cf13 120\cf9 )\
+           .\cf16 offset\cf9 (\cf16 x\cf9 : -\cf13 120\cf9 , \cf16 y\cf9 : \cf13 90\cf9 )\
+                \}
+\f1\b\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f5\b0\fs38 \cf2 \cb1 This is our first time using the group syntax. This is Apples definition of a Group:\
+\pard\pardeftab720\partightenfactor0
+
+\fs36 \cf2 A type that collects multiple instances of a content type \'97 like views, scenes, or commands \'97 into a single unit.\
+We're grouping the code that creates the motor\'85 So it's great for organizational use when you want to compartmentalize or section off different areas of code. \
+
+\f0\fs39\fsmilli19667 \cb4 Looking at the code inside the group, it's everything familiar that we've been doing all along, create the motor using the image that's in the asset catalog, resize it, set the aspect ratio so the motor fits on the screen as we want, and give it a frame size. Finally let's offset it a little bit on the X and Y axis, and this is what we should have in the previews so far:
+\f1\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 {{\NeXTGraphic motor.png \width6000 \height11300 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b0 \cf2 There's only one object in that group, but that's perfectly fine, groups help with our organization. Let's now add some gears to the scene, we can do that by calling up our GearView struct and passing in some values. I numbered all the components that we will be adding into this project, look at this illustration to show those components:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Labeled Components.png \width8200 \height16200 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs36 \cf0 Those are all the objects we will use, and this is actually the finished project. G stands for gear, and B stands for belt\'85  As we're coding all these objects, it is all done sequentially. So the code we write will start with the motor, then gear one, then gear two, gear three etc. So you can refer to this diagram to know where each gear and belt is being placed.
+\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 Ok, lets start adding components. Put the following code in right after the closing brace of the motor group:\
+
+\f1\b \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\b0\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0       \cf21 //
+\f4\b \cf22 MARK: - GEARS ANIMATING ON THE Z AXIS
+\f3\b0 \cf9 \
+                \cf7 Group\cf9 \{\
+                    \cf23 ///
+\f0 \cf24 Gear 1
+\f3 \cf9 \
+                    \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "doubleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 40\cf9 , \cf15 gearDegrees\cf9 : \cf13 360\cf9 , \cf15 offsetGearX\cf9 : -\cf13 124\cf9 , \cf15 offsetGearY\cf9 : \cf13 102\cf9 , \cf15 duration\cf9 : \cf13 5\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Gear  2
+\f3 \cf9 \
+                    \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "doubleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 100\cf9 , \cf15 gearDegrees\cf9 : \cf13 360\cf9 , \cf15 offsetGearX\cf9 : -\cf13 124\cf9 , \cf15 offsetGearY\cf9 : -\cf13 280\cf9 , \cf15 duration\cf9 : \cf13 7\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Gear  3
+\f3 \cf9 \
+                    \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "doubleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 100\cf9 , \cf15 gearDegrees\cf9 : \cf13 360\cf9 , \cf15 offsetGearX\cf9 : \cf13 124\cf9 , \cf15 offsetGearY\cf9 : -\cf13 280\cf9 , \cf15 duration\cf9 : \cf13 7\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Gear 4
+\f3 \cf9 \
+                    \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "doubleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 100\cf9 , \cf15 gearDegrees\cf9 : \cf13 360\cf9 , \cf15 offsetGearX\cf9 : \cf13 124\cf9 , \cf15 offsetGearY\cf9 : -\cf13 70\cf9 , \cf15 duration\cf9 : \cf13 5\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Gear 5
+\f3 \cf9 \
+                    \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "doubleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 80\cf9 , \cf15 gearDegrees\cf9 : -\cf13 360\cf9 , \cf15 offsetGearX\cf9 : \cf13 49\cf9 , \cf15 offsetGearY\cf9 : -\cf13 113\cf9 , \cf15 duration\cf9 : \cf13 5\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Gear 6
+\f3 \cf9 \
+                    \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "doubleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 100\cf9 , \cf15 gearDegrees\cf9 : \cf13 360\cf9 , \cf15 offsetGearX\cf9 : -\cf13 6\cf9 , \cf15 offsetGearY\cf9 : -\cf13 80\cf9 , \cf15 duration\cf9 : \cf13 7\cf9 )\
+                \}
+\f1\b\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b0 \cf2 I titled this group Gears Animating on the Z axis. And in here I'm calling the GearView struct six times, which creates six gears. Let's look at gear one, as all the rest of the gears are the same code with just different values. So in gear one, I set this to a width of 40 points, making this is a small gear, and positioned it directly over the front of the motor using the offsetGearX and offsetGearY parameters. The amount of degrees passed into the gearDegrees parameter is 360\'85 that's one revolution of a circle, as we want these gears to turn a full revolution around\'85 And later when we add the animation we will make this repeat forever, so they will keep turning. \
+These gears are turning on the Z axis. The Z axis is the axis that has to do with depth, so if you were to poke a rod directly through the center of the gear, and spin the gear, that's a z-axis spin.\
+The duration parameter is how long do we want the gear to turn one full revolution. \
+Notice also there are different size gears, again making those varying sizes using the gearWidth parameter\'85.and we dont need a gear height parameter as a circle only has dimension from its edges
+\f1\b . \
+
+\f0\b0 And if you look at the gearDegrees, they're all +360, except for one\'85 so one gear we're having turn in the opposite direction. \
+This is what the previous code we wrote should look like:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Z Axis Gears.png \width11280 \height21240 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs38 \cf0 If you run this in the simulator, all of those gears will now be animating,  because we set the animation up already in each individual file. All we're doing in this ContentView file is calling our created objects.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f0\b0 \cf2 That takes care of this group\'85 Let's continue and add another group of gears that animate on the Y axis this time. Add the following code right under the closing brace of the previous group:\
+
+\f1\b \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\b0\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0                 \cf21 //
+\f4\b \cf22 MARK: - GEARS ANIMATING ON THE Y AXIS
+\f3\b0 \cf9 \
+                \cf7 Group\cf9  \{\
+                    \cf23 ///
+\f0 \cf24 Gear 7
+\f3 \cf9 \
+                    \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "singleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 100\cf9 , \cf15 gearDegrees\cf9 : -\cf13 360\cf9 , \cf15 offsetGearX\cf9 : -\cf13 62\cf9 , \cf15 offsetGearY\cf9 : -\cf13 85\cf9 , \cf15 rotateDegrees\cf9 : \cf13 76\cf9 , \cf15 duration\cf9 : \cf13 7\cf9 , \cf15 xAxis\cf9 : \cf13 0\cf9 , \cf15 yAxis\cf9 : \cf13 1\cf9 , \cf15 zAxis\cf9 : \cf13 0\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Gear 8
+\f3 \cf9 \
+                    \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "singleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 25\cf9 , \cf15 gearDegrees\cf9 : -\cf13 360\cf9 , \cf15 offsetGearX\cf9 : -\cf13 59\cf9 , \cf15 offsetGearY\cf9 : \cf13 19\cf9 , \cf15 rotateDegrees\cf9 : \cf13 76\cf9 , \cf15 duration\cf9 : \cf13 7\cf9 , \cf15 xAxis\cf9 : \cf13 0\cf9 , \cf15 yAxis\cf9 : \cf13 1\cf9 , \cf15 zAxis\cf9 : \cf13 0\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Gear 10
+\f3 \cf9 \
+                    \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "singleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 100\cf9 , \cf15 gearDegrees\cf9 : -\cf13 360\cf9 , \cf15 offsetGearX\cf9 : \cf13 160\cf9 , \cf15 offsetGearY\cf9 : \cf13 94\cf9 , \cf15 rotateDegrees\cf9 : \cf13 76\cf9 , \cf15 duration\cf9 : \cf13 7\cf9 , \cf15 xAxis\cf9 : \cf13 0\cf9 , \cf15 yAxis\cf9 : \cf13 1\cf9 , \cf15 zAxis\cf9 : \cf13 0\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Gear 11
+\f3 \cf9 \
+                    \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "singleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 25\cf9 , \cf15 gearDegrees\cf9 : -\cf13 360\cf9 , \cf15 offsetGearX\cf9 : \cf13 163\cf9 , \cf15 offsetGearY\cf9 : \cf13 252\cf9 , \cf15 rotateDegrees\cf9 : \cf13 76\cf9 , \cf15 duration\cf9 : \cf13 7\cf9 , \cf15 xAxis\cf9 : \cf13 0\cf9 , \cf15 yAxis\cf9 : \cf13 1\cf9 , \cf15 zAxis\cf9 : \cf13 0\cf9 )\
+                \}\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f1\b\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\
+
+\f0\b0 Again we start off this group of code by adding our organizational Pragma Mark. Then our Grouping structure. And then we call the GearView struct 4 times here, creating 4 gears. Remember when we created this GearView struct, we used the rotation3Deffect modifier, that had three parameters in its degree function, the X Y, and Z axis parameters. When we use this option here in the ContentView, we can pass in some values that will rotate these gears on the Y axis. This modifier to allow us to rotate these gears to different angles. \
+Looking at gear seven, this has a width of 100 points, and a gear degree of -360\'85 the negative part is because I want these gears to rotate counterclockwise. \
+Then reposition the gears in place using the offsetGear X and Y parameters. And by using the rotateDegrees parameter, and passing in a value of 76, we can rotate this gear on the Y axis. \
+A quick explanation of the axis\'85.The X axis is the access that runs from left to right. To help visualize this, imagine you open a door, and there's a line running from left to right in the middle of the door, you are opening the door on the X axis. The Y axis goes from top to bottom. To visualize the Y axis, imagine you are opening the top lid of a washing machine\'85 That lid is rotating on the Y axis. And the Z axis runs from front to back. Imagine you stick a rod through the middle of a round paper plate, and spin it, you are spinning that plate on the Z axis. \
+Coming back to our code\'85 For the yAxis parameter, by passing in value of one, that indicates to the degrees function, we want to turn an object on the Y axis. And how much we turn it again is determined by the rotateDegrees parameter, which we passed the value of 76 in. \
+And the other three gears are almost exactly the same except their sizes very, and their offset location varies\'85 But they all are turning on the Y axis.\
+After adding this group of code\'85 This is what your previous should look like:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Y axis gears.png \width6000 \height11300 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs38 \cf0 And as we've seen\'85 Since we built all these gears already and added animation, if you run this in the simulator, all these gears will be turning on their set axis.
+\fs53\fsmilli26667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\fs39\fsmilli19667 \cf2 \
+Let's continue and add another group that will hold a gear that animates on the X axis. Add the following code right after the closing brace of the previous group:\
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0   \cf21 //
+\f4\b \cf22 MARK: - GEAR ANIMATING ON THE X AXIS
+\f3\b0 \cf9 \
+   \cf7 Group\cf9  \{\
+                    \cf23 ///
+\f0 \cf24 Gear 9
+\f3 \cf9 \
+                    \cf18 GearView\cf9 (\cf15 gearImage\cf9 : \cf12 "singleGear"\cf9 , \cf15 gearWidth\cf9 : \cf13 175\cf9 , \cf15 gearDegrees\cf9 : \cf13 360\cf9 , \cf15 offsetGearX\cf9 : \cf13 60\cf9 , \cf15 offsetGearY\cf9 : \cf13 39\cf9 , \cf15 rotateDegrees\cf9 : \cf13 84\cf9 , \cf15 duration\cf9 : \cf13 7\cf9 ,  \cf15 xAxis\cf9 : \cf13 1\cf9 , \cf15 yAxis\cf9 : \cf13 0\cf9 , \cf15 zAxis\cf9 : \cf13 0\cf9 )\
+                \}\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f0\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+Let's we have one gear here, and this is the biggest gear so far at 175 points for the width. We're placing this gear in the scene so it meshes with the gear to its right. \
+This is similar to the code we've already placed for the other gears, but the difference here is where using the xAxis parameter and passing in value of 1 to activate that parameter. And the rotation angle for this is 84 degrees.\
+ This is the gear that will match up with the WormGear\'85 So before we run this and check out those two gears turning together, lets add the worm gear now, add this code next:\
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0                 \cf21 //
+\f4\b \cf22 MARK: - WORM GEAR
+\f3\b0 \cf9 \
+                \cf7 Group\cf9  \{\
+                    \cf18 WormGearView\cf9 ().\cf16 offset\cf9 (\cf16 x\cf9 : \cf13 60\cf9 , \cf16 y\cf9 : \cf13 30\cf9 ).\cf16 zIndex\cf9 (-\cf13 1\cf9 )\
+                \}\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f0\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+This grouping gets labeled \'93Worm Gear\'94 and gets placed using the offset modifier. Something new here though is the Z index modifier. The Z index modifier place is a view in front of or behind other views, so it's helpful in allowing us to position our views on the Z axis. I've talked about the Z axis already, this has to do with depth, and objects moving closer to and further away from us. So with the Z index is we can pass a value inn that will do just that for a certain view. Why would we want to move you closer or further away from our perspective? Well here's a good example\'85 Let's leave this Z index modifier in and look at a screenshot of what we have so far in code, take notice of the worm gear, and gear number nine that interacts with it:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 {{\NeXTGraphic worm gear.png \width6000 \height11300 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0 \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f5 \cf9 The worm gear and gear nine are perfectly placed, and the teeth mesh up nicely\'85 The worm gear is placed behind gear number nine, because I used the Z index and passed in a negative value. All views have a default Z index of zero\'85 So if I pass a negative value, for example negative 1 here, and this pushes the worm gear view behind the other views. And you could use any value you want to index all your views from front to back, the higher the number, the closer to the top or front the view will be.\
+Now let's see what the view will look like when I don't used to Z index here:
+\f3 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 {{\NeXTGraphic worm gear without z index.png \width6000 \height11300 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f5 \cf9 From the illustration you can see the worm gear is now moved to the front\'85 That's not the placement that I want, I want the worm gear to mesh up from behind gear number nine. But now you can see how this can be an important modifier when trying to organize your views\'85 We will use it again when we add the shaft views.
+\f3 \
+\
+
+\f5 And with that we finished all are gears, now we can move onto adding the belts onto the scene, continuing with our organization and grouping, add the following group right under the previous one:
+\f3 \
+\
+                 \cf21 //
+\f4\b \cf22 MARK: - BELTS ON THE Z AXIS
+\f3\b0 \cf9 \
+                \cf7 Group\cf9  \{\
+                    \cf23 ///
+\f0 \cf24 Belt 1
+\f3 \cf9 \
+                    \cf18 BeltView\cf9 (\cf15 animateBelt\cf9 : 
+\f4\b \cf10 true
+\f3\b0 \cf9 , \cf15 beltWidth\cf9 : \cf13 425\cf9 , \cf15 beltHeight\cf9 : \cf13 48\cf9 , \cf15 offsetBeltX\cf9 : -\cf13 124\cf9 , \cf15 offsetBeltY\cf9 : -\cf13 90\cf9 , \cf15 rotateDegrees\cf9 : \cf13 90\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Belt 2
+\f3 \cf9 \
+                    \cf18 BeltView\cf9 (\cf15 animateBelt\cf9 : 
+\f4\b \cf10 true
+\f3\b0 \cf9 , \cf15 beltWidth\cf9 : \cf13 352\cf9 , \cf15 beltHeight\cf9 : \cf13 100\cf9 , \cf15 offsetBeltX\cf9 : \cf13 0\cf9 , \cf15 offsetBeltY\cf9 : -\cf13 280\cf9 , \cf15 rotateDegrees\cf9 : \cf13 0\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Belt 3
+\f3 \cf9 \
+                    \cf18 BeltView\cf9 (\cf15 animateBelt\cf9 : 
+\f4\b \cf10 true
+\f3\b0 \cf9 , \cf15 beltWidth\cf9 : \cf13 258\cf9 , \cf15 beltHeight\cf9 : \cf13 48\cf9 , \cf15 offsetBeltX\cf9 : \cf13 124\cf9 , \cf15 offsetBeltY\cf9 : -\cf13 175\cf9 , \cf15 rotateDegrees\cf9 : \cf13 90\cf9 )\
+                \}\
+\
+\
+
+\f5 And this grouping is for the Z axis belts\'85 There are three of them. We call the BeltView struct, and we set the animateBelt properties to true, then give each belt an appropriate width and height so it can connect to  their corresponding gears, using the beltWidth, and beltHeight parameters. And then place the belts where they need to be, using the offset belt parameters. And finally rotate either 90 degrees, which place is a belt vertically, or 0 degrees, which places the other belt horizontally. Here's what they look like:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3 \cf9 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 {{\NeXTGraphic belts.png \width7000 \height13180 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs34 \cf0 And as we've seen with the other blocks of code, these are fully functional, so they will animate when you run them in the simulator. And these belts are rotating on the Z axis, the belts have not been rotated along the other two axis, so let's take a look at rotating belts on the Y axis\'85 as before, add the following code after the closing brace of the previous group:\
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8                  \cf21 //
+\f4\b \cf22 MARK: - BELTS ON THE Y AXIS
+\f3\b0 \cf9 \
+                \cf7 Group\cf9  \{\
+                    \cf23 ///
+\f0 \cf24 Belt 4
+\f3 \cf9 \
+                    \cf18 BeltView\cf9 ( \cf15 beltWidth\cf9 : \cf13 32\cf9 , \cf15 beltHeight\cf9 : \cf13 125\cf9 )\
+                        .\cf16 rotation3DEffect\cf9 (.\cf16 degrees\cf9 (\cf13 75\cf9 ), \cf16 axis\cf9 : (x: \cf13 0\cf9 , y: \cf13 1\cf9 , z: \cf13 0\cf9 ))\
+                        .\cf16 offset\cf9 (\cf16 x\cf9 : -\cf13 60\cf9 , \cf16 y\cf9 : -\cf13 33\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Belt 5
+\f3 \cf9 \
+                    \cf18 BeltView\cf9 (\cf15 beltWidth\cf9 : \cf13 28\cf9 , \cf15 beltHeight\cf9 : \cf13 180\cf9 , \cf15 offsetBeltY\cf9 : -\cf13 10\cf9 )\
+                        .\cf16 rotation3DEffect\cf9 (.\cf16 degrees\cf9 (\cf13 75\cf9 ), \cf16 axis\cf9 : (x: \cf13 0\cf9 , y: \cf13 1\cf9 , z: \cf13 0\cf9 ))\
+                        .\cf16 offset\cf9 (\cf16 x\cf9 : \cf13 162\cf9 , \cf16 y\cf9 : \cf13 185\cf9 )\
+                \}\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f0\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs34 \cf0 \cb1 \kerning1\expnd0\expndtw0 And for this group we're animating the belts on the Y axis. Calling the BeltView struct again, and setting these two belts to a width and height appropriate for the gear they will be on. Then we use the rotation 3-D effect modifier, and and rotating these belts on the Y axis, so passing a value of one into the wipe parameter will do just that, and the amount we rotate these two belts is 75 degrees. And again offsetting the belts so they line up with their corresponding gears using the offset modifier. So currently your previews should look like this:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 {{\NeXTGraphic y axis belts.png \width6000 \height11300 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs34 \cf0 All those belts and gears are fully animating now if you run it in the simulator. And this leaves us only two more groups to go, and a background, so let's now add the shafts to the scene. Add the following code next:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\b0\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0                 \cf21 //
+\f4\b \cf22 MARK: - GEAR SHAFTS
+\f3\b0 \cf9 \
+                \cf7 Group\cf9 \{\
+                    \cf23 ///
+\f0 \cf24 Shaft 1
+\f3 \cf9 \
+                    \cf18 GearShaftView\cf9 ().\cf16 offset\cf9 (\cf16 x\cf9 : \cf13 5\cf9 , \cf16 y\cf9 : \cf13 28\cf9 ).\cf16 zIndex\cf9 (-\cf13 1\cf9 )\
+                    \cf23 ///
+\f0 \cf24 Shaft 2
+\f3 \cf9 \
+                    \cf18 GearShaftView\cf9 ().\cf16 offset\cf9 (\cf16 x\cf9 : \cf13 95\cf9 , \cf16 y\cf9 : \cf13 260\cf9 ).\cf16 zIndex\cf9 (-\cf13 1\cf9 )\
+                \}\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\f1\b\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\
+
+\f0\b0 This is our gear shaft group, and I'm calling the GearShaftView struct twice to create 2 gear shafts. All we have to do with these are simply offset them to the proper locations, and call the ZIndex on them, passing in a negative value. This will position them behind the worm gear, and behind the gear, creating the illusion that the shaft is actually part of the WormGear, and part of the other gear for the second shaft. Here's what it looks like:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Shafts.png \width7000 \height13180 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs34 \cf0 These are the two objects that we could not animate with conventional methods because it would not look good and it wouldn't actually be an accurate representation of how a shaft turns, so we created our shadowboxes or rectangles and placed them strategically over these two shafts. When you run this in the simulator you'll notice these rectangles appear to make the shaft turn, as well as with the worm gear. \
+These are just objects that are sitting on the screen doing nothing, but because of a little trickery, they actually appear like they're spinning.
+\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+The final group is the fan group. All these gears and belts had to produce some sort of output\'85 and in this project, it's to spin a fan. Let's now add the final grouping of code and right under the existing group:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0   \cf21 //
+\f4\b \cf22 MARK: - FAN
+\f3\b0 \cf9 \
+                \cf7 Group\cf9  \{\
+                    \cf23 ///
+\f0 \cf24 Fan
+\f3 \cf9 \
+                    \cf18 FanView\cf9 ().\cf16 offset\cf9 (\cf16 x\cf9 : \cf13 0\cf9 , \cf16 y\cf9 : \cf13 250\cf9 ).\cf16 frame\cf9 (\cf16 width\cf9 : \cf13 140\cf9 , \cf16 height\cf9 : \cf13 140\cf9 )\
+                \}
+\f0\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+All we need to do is call the FanView struct, offset it to the bottom of the scene, and set a width for it. And again since it's a round object we do not need to set the height on this. \
+\
+Now for the very last couple of lines of code for the project, adding a background. I have a nice gold background that'll look good with all the objects against it, so let's come out of the main ZStack and after it's closing brace, add the following code:\
+\pard\tx890\pardeftab890\pardirnatural\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0  \cf21 //
+\f4\b \cf22 MARK: - BACKGROUND
+\f3\b0 \cf9 \
+        .\cf16 background\cf9 (\cf7 Image\cf9 (\cf12 "goldBackground"\cf9 ).\cf16 resizable\cf9 ().\cf16 aspectRatio\cf9 (\cf16 contentMode\cf9 : .\cf16 fill\cf9 )\
+            .\cf16 frame\cf9 (\cf16 width\cf9 : \cf13 400\cf9 , \cf16 height\cf9 : \cf13 1000\cf9 ))
+\f0\fs39\fsmilli19667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\cf2 \
+Setting the gold background to a frame width and height of 400 x 1000. It goes from end to end nicely on the iPhone. Here is the final image of how the project looks:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 {{\NeXTGraphic fiinal image.png \width8000 \height15060 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs36 \cf0 Run that in the simulator and see what do you think. Play around with all the parameters and settings, change the colors of the belts or objects, change the angles of rotation\'85 Really play around so you understand what these parameters and functions all do. Also something else to notice, we've been using these pragma marks all along, and to really appreciate them, come back up to the menu bar and click on the last tab\'85 You will see every pragma mark we made, and to jump to that part of the code all you have to do is click on any one of them, and your taken there instantly. Again if your file is really long, you can navigate it very simply by looking through the Pragma marks in the menu bar.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs40 \cf0 Summary\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs43\fsmilli21667 \cf2 \cb4 \expnd0\expndtw0\kerning0
+In closing out this project we've accomplished quite a bit. You got to see how to create separate files and organize them all neatly into one file in which all the different parts of code can be readily accessed, regardless of how big it is, by using pragma marks, and groups.\
+You got to see how objects can animate objects on all three axes, X, Y, and Z. \
+
+\fs45\fsmilli22667 And you got to see how the zIndex works and it's important in the placement of views.\
+Also if you'd like to learn more about gears and how they work\'85 Here is a great website that lets you create gears on the site with different size teeth and sprockets, and you can animate them on the website as well:\
+{\field{\*\fldinst{HYPERLINK "https://woodgears.ca/gear_cutting/index.html"}}{\fldrslt https://woodgears.ca/gear_cutting/index.html}}\
+\
+In the next project we will look at creating a custom timing curve to animate a flower so it appears to be breathing, complete with an in and out breath.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+
+\fs39\fsmilli19667 \cf2 \
+\
+\
+
+\f1\b \
+\
+}
